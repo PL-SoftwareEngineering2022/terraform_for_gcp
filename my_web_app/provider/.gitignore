@@ -1,0 +1,8 @@
+*.terraform/*
+*.tfstate
+*.tfstate.backup
+*.tfvars.json
+.terraform
+terraform.rc
+*.terraform/providers/*
+terraform.tfstate
