@@ -23,8 +23,8 @@ resource "google_compute_instance" "webapp-server" {
   }
 
   network_interface {
-    network    = var.vpc_self_link     #"https://www.googleapis.com/compute/v1/projects/phyll-mamz-playground/global/networks/phyll-mamz-vpc" # module.<module_name>.<output_value_name>
-    subnetwork = var.subnet2_self_link #"https://www.googleapis.com/compute/v1/projects/phyll-mamz-playground/regions/europe-west1/subnetworks/compute-subnetwork"
+    network    = var.vpc_self_link
+    subnetwork = var.subnet2_self_link 
     access_config {
       nat_ip = google_compute_address.webapp_server_static_ip.address
     }

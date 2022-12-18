@@ -39,7 +39,7 @@ module "compute_instances" {
   env                 = var.env
   vpc_name            = var.vpc_name
   subnet2_name        = var.subnet2_name
-  vpc_self_link       = module.network.network_self_link
+  vpc_self_link       = module.network.network_self_link # module.<module_name>.<output_value_name>
   subnet2_self_link   = module.network.subnet2_self_link
 }
 
