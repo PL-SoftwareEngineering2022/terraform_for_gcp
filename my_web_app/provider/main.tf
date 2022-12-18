@@ -14,18 +14,18 @@ module "network" {
   firewall_name           = var.firewall_name
 }
 
-module "gke" {
-  source                   = "../modules/gke"
-  gke_cluster_name         = var.gke_cluster_name
-  gke_cluster_location     = var.gke_cluster_location
-  remove_default_node_pool = var.remove_default_node_pool
-  initial_node_count       = var.initial_node_count
-  gke_node_pool_name       = var.gke_node_pool_name
-  node_count               = var.node_count
-  gke_preemptibility       = var.gke_preemptibility
-  gke_machine_type         = var.gke_machine_type
-  sa_email                 = google_service_account.web_app_project_sa.email
-}
+# module "gke" {
+#   source                   = "../modules/gke"
+#   gke_cluster_name         = var.gke_cluster_name
+#   gke_cluster_location     = var.gke_cluster_location
+#   remove_default_node_pool = var.remove_default_node_pool
+#   initial_node_count       = var.initial_node_count
+#   gke_node_pool_name       = var.gke_node_pool_name
+#   node_count               = var.node_count
+#   gke_preemptibility       = var.gke_preemptibility
+#   gke_machine_type         = var.gke_machine_type
+#   sa_email                 = google_service_account.web_app_project_sa.email
+# }
 
 module "compute_instances" {
   source              = "../modules/compute_instances"
@@ -43,29 +43,29 @@ module "compute_instances" {
   subnet2_self_link   = module.network.subnet2_self_link
 }
 
-module "databases" {
-  source               = "../modules/data"
-  redis_instance_name  = var.redis_instance_name
-  redis_tier           = var.redis_tier
-  region               = var.region
-  redis_memory_size_gb = var.redis_memory_size_gb
-  redis_location_id    = var.redis_location_id
-  redis_version        = var.redis_version
-  redis_display_name   = var.redis_display_name
-  vpc_name             = var.vpc_name
-  vpc_self_link        = module.network.network_self_link
+# module "databases" {
+#   source               = "../modules/data"
+#   redis_instance_name  = var.redis_instance_name
+#   redis_tier           = var.redis_tier
+#   region               = var.region
+#   redis_memory_size_gb = var.redis_memory_size_gb
+#   redis_location_id    = var.redis_location_id
+#   redis_version        = var.redis_version
+#   redis_display_name   = var.redis_display_name
+#   vpc_name             = var.vpc_name
+#   vpc_self_link        = module.network.network_self_link
 
-  // SQL instance
-  sql_db_name             = var.sql_db_name
-  sql_db_version          = var.sql_db_version
-  sql_tier                = var.sql_tier
-  sql_deletion_protection = var.sql_deletion_protection
+#   // SQL instance
+#   sql_db_name             = var.sql_db_name
+#   sql_db_version          = var.sql_db_version
+#   sql_tier                = var.sql_tier
+#   sql_deletion_protection = var.sql_deletion_protection
 
 
-  // gcs buckets
-  gcs_bucket_name             = var.gcs_bucket_name
-  gcs_location                = var.gcs_location
-  force_destroy               = var.force_destroy
-  uniform_bucket_level_access = var.uniform_bucket_level_access
-  versioning_enabled          = var.versioning_enabled
-}
+#   // gcs buckets
+#   gcs_bucket_name             = var.gcs_bucket_name
+#   gcs_location                = var.gcs_location
+#   force_destroy               = var.force_destroy
+#   uniform_bucket_level_access = var.uniform_bucket_level_access
+#   versioning_enabled          = var.versioning_enabled
+# }
