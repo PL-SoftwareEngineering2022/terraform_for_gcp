@@ -8,6 +8,6 @@ terraform {
 }
 
 provider "google" {
-  project = "phyll-mamz-playground"
+  project = var.project
 }
 
