@@ -1,8 +1,10 @@
 //gke
-resource "google_service_account" "gke_sa" {
-  account_id   = "webapp-gke-sa"
-  display_name = "service account for GKE"
-}
+# Google recommends custom service accounts that have cloud-platform scope and 
+# permissions granted via IAM Roles. 
+# resource "google_service_account" "gke_sa" {
+#   account_id   = "webapp-gke-sa"
+#   display_name = "service account for GKE"
+# }
 
 resource "google_container_cluster" "webapp-gke-cluster" {
   name     = var.gke_cluster_name
@@ -25,7 +27,8 @@ resource "google_container_node_pool" "webapp_preemptible_gke_nodes" {
     preemptible  = var.gke_preemptibility
     machine_type = var.gke_machine_type
 
-    service_account = var.sa_email #google_service_account.gke_sa.email
+    service_account = var.sa_email #  # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles. 
+    # In this case, this should be: gke_sa google_service_account.gke_sa.email, but we are using the one already formed in the root module in the iam.tf file
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
