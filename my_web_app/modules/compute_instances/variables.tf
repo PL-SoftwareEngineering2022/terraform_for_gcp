@@ -8,3 +8,5 @@ variable "ce_boot_disk_image"{}
 variable "env"{}
 variable "vpc_name" {}
 variable "subnet2_name" {}
+variable "vpc_self_link" {}
+variable "subnet2_self_link"{}

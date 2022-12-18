@@ -1,6 +1,6 @@
 //gke
 resource "google_service_account" "gke_sa" {
-  account_id = "webapp_gke_sa"
+  account_id = "webapp-gke-sa"
   display_name = "service account for GKE"
 }
 
@@ -25,7 +25,7 @@ resource "google_container_node_pool" "webapp_preemptible_gke_nodes" {
     preemptible  = var.gke_preemptibility
     machine_type = var.gke_machine_type
 
-    service_account = google_service_account.gke_sa.email
+    service_account = var.sa_email #google_service_account.gke_sa.email
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]

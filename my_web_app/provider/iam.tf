@@ -37,8 +37,8 @@ resource "google_project_iam_member" "webappproject_binding" {
 }
 
 resource "google_project_service" "project" {
-  project  = var.project
-  for_each = toset(local.api_services)
-  service  = each.value
+  project            = var.project
+  for_each           = toset(local.api_services)
+  service            = each.value
   disable_on_destroy = false
 }

@@ -7,6 +7,7 @@ variable "redis_location_id"{}
 variable "redis_version"{}
 variable "redis_display_name"{}
 variable "vpc_name"{}
+variable "vpc_self_link"{}
 
 // SQL instance
 variable "sql_db_name"{}

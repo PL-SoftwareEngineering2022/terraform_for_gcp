@@ -5,7 +5,7 @@ resource "google_redis_instance" "webapp_memory_cache" {
   region         = var.region
   memory_size_gb = var.redis_memory_size_gb
   location_id    = var.redis_location_id 
-  authorized_network = "https://www.googleapis.com/compute/v1/projects/phyll-mamz-playground/global/networks/phyll-mamz-vpc"
+  authorized_network = var.vpc_self_link  #"https://www.googleapis.com/compute/v1/projects/phyll-mamz-playground/global/networks/phyll-mamz-vpc"
   redis_version = var.redis_version
   display_name  = var.redis_display_name
 }

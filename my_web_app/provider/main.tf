@@ -24,7 +24,7 @@ module "gke" {
   node_count               = var.node_count
   gke_preemptibility       = var.gke_preemptibility
   gke_machine_type         = var.gke_machine_type
-  # sa_id                    = var.sa_id
+  sa_email                 = google_service_account.web_app_project_sa.email
 }
 
 module "compute_instances" {
@@ -39,6 +39,8 @@ module "compute_instances" {
   env                 = var.env
   vpc_name            = var.vpc_name
   subnet2_name        = var.subnet2_name
+  vpc_self_link       = module.network.network_self_link
+  subnet2_self_link   = module.network.subnet2_self_link
 }
 
 module "databases" {
@@ -51,7 +53,8 @@ module "databases" {
   redis_version        = var.redis_version
   redis_display_name   = var.redis_display_name
   vpc_name             = var.vpc_name
-
+  vpc_self_link        = module.network.network_self_link
+  
   // SQL instance
   sql_db_name             = var.sql_db_name
   sql_db_version          = var.sql_db_version

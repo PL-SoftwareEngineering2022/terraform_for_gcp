@@ -7,4 +7,4 @@ variable "gke_node_pool_name"{}
 variable "node_count"{}
 variable "gke_preemptibility"{}
 variable "gke_machine_type"{}
-# variable "sa_email" {}
+variable "sa_email" {}

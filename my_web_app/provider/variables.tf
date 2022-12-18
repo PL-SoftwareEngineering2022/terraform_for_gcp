@@ -165,3 +165,4 @@ variable "redis_location_id" {
   default = "us-central1-a"
 }
 
+
