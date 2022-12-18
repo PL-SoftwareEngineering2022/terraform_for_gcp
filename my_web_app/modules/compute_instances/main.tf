@@ -25,7 +25,7 @@ resource "google_compute_instance" "webapp-server" {
   network_interface {
     network    = var.vpc_self_link
     subnetwork = var.subnet2_self_link 
-    access_config {
+    access_config { # leave this as empty brackets unless you want to create a static IP to be associated with the instance as shown below
       nat_ip = google_compute_address.webapp_server_static_ip.address
     }
   }
