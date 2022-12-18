@@ -54,7 +54,7 @@ module "databases" {
   redis_display_name   = var.redis_display_name
   vpc_name             = var.vpc_name
   vpc_self_link        = module.network.network_self_link
-  
+
   // SQL instance
   sql_db_name             = var.sql_db_name
   sql_db_version          = var.sql_db_version

@@ -9,5 +9,5 @@ output "network_self_link" {
 }
 
 output "subnet2_self_link" {
-    value = google_compute_subnetwork.webapp_subnet2.self_link
+  value = google_compute_subnetwork.webapp_subnet2.self_link
 }

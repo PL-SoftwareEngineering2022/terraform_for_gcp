@@ -1,6 +1,6 @@
 //gke
 resource "google_service_account" "gke_sa" {
-  account_id = "webapp-gke-sa"
+  account_id   = "webapp-gke-sa"
   display_name = "service account for GKE"
 }
 

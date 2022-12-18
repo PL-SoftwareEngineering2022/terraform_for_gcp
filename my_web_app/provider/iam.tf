@@ -33,7 +33,6 @@ resource "google_project_iam_member" "webappproject_binding" {
   for_each = toset(local.sa_roles)
   role     = each.value
   member   = "serviceAccount:${google_service_account.web_app_project_sa.email}"
-
 }
 
 resource "google_project_service" "project" {
